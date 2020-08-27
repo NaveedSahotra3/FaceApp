@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Sidebar from './Component/Sidebar/sidebar'
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import Signup from './Component/newStudentForm/newStudentForm'
+import Attendace from './Component/attendanceDetail/attendance'
+class App extends React.Component{
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render(){
+return(<div>
+
+<Sidebar/>
+<Router>
+        {/* <Sidebar /> */}
+
+        <Route path="/" component={Sidebar} />
+        <Route path="/NewStudentForm" component={Signup} />
+       
+        <Route path="/Attendace" component={Attendace}/>
+
+      </Router>
+
+</div>)
+
+  }
 }
 
-export default App;
+export default App

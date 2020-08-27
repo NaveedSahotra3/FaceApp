@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.0.1",
+    "express-fileupload": "^1.1.6",
+    "mongoose": "^5.9.5",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {},
+  "description": ""
+}
