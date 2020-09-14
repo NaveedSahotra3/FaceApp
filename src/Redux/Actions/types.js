@@ -1,0 +1,9 @@
+export const STUDENT_ADDED = 'STUDENT_ADDED'
+export const STUDENT_ADDED_FAIL = 'STUDENT_ADDED_FAIL'
+export const AUTH_ERROR = 'AUTH_ERROR'
+export const ATTENDANCE_LIST = 'ATTENDANCE_LIST'
+
+
+
+
+

@@ -1,94 +1,65 @@
-import React from 'react'
-import './attendanceDetail.css'
+import React, { useEffect, useState } from "react";
+import "./attendanceDetail.css";
+import { getAllAttendandce } from "../../Redux/Actions/authActions";
+import { connect, coonect } from "react-redux";
 
-class Attendace extends React.Component{
-    render(){
-        return(
-            <div >
-                 <h3 class="display-4">Attendace Detail</h3>
-               
-               <div className="tbl">
-               <table class="table">
-  <thead class="thead-dark">
-  <h3 class="display-6">Today</h3>
+const Attendace = (props) => {
+  let { getAllAttendandce, list_attendance } = props;
+  let [attendance, setAttend] = useState(false);
+  useEffect(() => {
+    getAllAttendandce();
+  }, []);
+  useEffect(() => {
+    setAttend(list_attendance);
+  }, [list_attendance]);
 
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Class</th>
-      <th scope="col">Time Entrance</th>
-      <th scope="col">Time Quit</th>
+  console.log(attendance);
+  return (
+    <div>
+      <h3 class="display-4">Attendace Detail</h3>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>BsCS</td>
-      <td>5 August 2020 at 01:00pm</td>
-      <td>5 August 2020 at 05:00pm</td>
+      <div className="tbl">
+        <table class="table">
+          <thead class="thead-dark">
+            <h3 class="display-6">Today</h3>
 
-      {/* <td>5 August 2020 at 05:00pm</td> */}
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Student Name</th>
+              <th scope="col">Class</th>
+              <th scope="col">Roll#</th>
+              <th scope="col">Session</th>
+              <th scope="col">Time In</th>
+              <th scope="col">Time Out</th>
+            </tr>
+          </thead>
+          <tbody>
+            {attendance
+              ? attendance.map((item, key) => {
+                  return (
+                    <tr key={key}>
+                      <th scope="row">{key + 1}</th>
+                      <td>{item.firstname + " " + item.lastname}</td>
+                      <td>{item.class}</td>
+                      <td>{item.roll_no}</td>
+                      <td>{item.session}</td>
+                      <td>{item.time_in}</td>
+                      <td>{item.time_out}</td>
+                    </tr>
+                  );
+                })
+              : null}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
 
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Mark</td>
-      <td>BsCS</td>
-      <td>5 August 2020 at 01:00pm</td>
-      <td>5 August 2020 at 05:00pm</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Mark</td>
-      <td>BsCS</td>
-      <td>5 August 2020 at 01:00pm</td>
-      <td>5 August 2020 at 05:00pm</td>
-    </tr>
-  </tbody>
-</table>
+let mapStateToProps = (state) => {
+  return {
+    list_attendance: state.auth.attendance_list,
+  };
+};
 
-<table class="table">
-  <h3 class="display-6">Previous Days</h3>
-
-  <thead class="thead-light">
-    <tr>
-    <th scope="col">#</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Class</th>
-      <th scope="col">Time Entrance</th>
-      <th scope="col">Time Quit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>BsCS</td>
-      <td>5 August 2020 at 01:00pm</td>
-      <td>5 August 2020 at 05:00pm</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Mark</td>
-      <td>BsCS</td>
-      <td>5 August 2020 at 01:00pm</td>
-      <td>5 August 2020 at 05:00pm</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Mark</td>
-      <td>BsCS</td>
-      <td>5 August 2020 at 01:00pm</td>
-      <td>5 August 2020 at 05:00pm</td>
-    </tr>
-  </tbody>
-</table>
-               </div>
-            </div>
-        )
-    }
-}
-
-export default Attendace
+export default connect(mapStateToProps, { getAllAttendandce })(Attendace);

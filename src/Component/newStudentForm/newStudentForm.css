@@ -1,0 +1,29 @@
+.input_fields {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 10px;
+}
+.ml-1{
+    margin-left: 5px;
+}
+.mt-5{
+    margin-top: 5px;
+}
+.hidden{
+    display: none !important;
+}
+.gender{
+    margin-left: 10px;
+    font-size: 16px;
+    margin-right: 30px;
+}
+.mt-6{
+    margin-top: 4.2rem;
+}
+.mb-10{
+    margin-bottom: 30px;
+}
