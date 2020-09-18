@@ -5,15 +5,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // import {BrowserRouter} from 'react-router-dom'
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { Router as BrowserRouter } from "react-router-dom";
 import Store from "./Redux/Store";
+import History from "./history";
 
 // </BrowserRouter>
 ReactDOM.render(
   <Provider store={Store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </Provider>,
 
   document.getElementById("root")
